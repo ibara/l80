@@ -51,6 +51,12 @@ Bugs
 ----
 Probably lots. Test and let me know.
 
+Future
+------
+`l80` would be able to link MS-DOS `COM` executables as-is,
+if only there were an assembler or compiler that used the
+`l80` file format...
+
 License
 -------
 ISC License. See `LICENSE` for details.
