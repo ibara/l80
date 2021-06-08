@@ -1,0 +1,9 @@
+{
+	"authors": [
+		"Brian Callahan"
+	],
+	"copyright": "Copyright © 2021, Brian Callahan",
+	"description": "Intel 8080/Zilog Z80 linker.",
+	"license": "ISC",
+	"name": "l80"
+}
