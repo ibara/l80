@@ -168,6 +168,7 @@ private int process2()
             /* Skip control byte.  */
             ++i;
 
+            /* Get symbol reference.  */
             while (rawobjs[i] != '\002') {
                 name ~= rawobjs[i];
                 ++i;
@@ -216,14 +217,13 @@ int main(string[] args)
 {
     int ret;
 
+    /* Make sure we have the right number of arguments.  */
     if (args.length < 3) {
         stderr.writeln("usage: l80 file.com file1.obj [file2.obj ...]");
         return 1;
     }
 
-    /**
-     * Write all object files into a single buffer.
-     */
+    /* Write all object files into a single buffer.  */
     foreach (size_t i; 2 .. args.length) {
         auto objsplit = args[i].findSplit(".obj");
 
