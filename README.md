@@ -59,6 +59,10 @@ symbols. Doing so is planned.
 The order of the object files and libraries can be very
 important.
 
+Compilers should implement name mangling for symbols not
+destined to be globals to prevent spurious duplicate symbol
+errors.
+
 Bugs
 ----
 Probably lots. Test and let me know.
