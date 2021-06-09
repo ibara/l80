@@ -10,6 +10,10 @@ There are not (yet) any assemblers or compilers that
 produce 8086 object code for `l80`. But when such programs
 appear, `l80` will already be able to handle them.
 
+You can read an in-depth explanation of how the linker and
+object file format work
+[here](https://briancallahan.net/blog/20210609.html).
+
 Building
 --------
 `l80` should build with any
