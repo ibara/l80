@@ -43,7 +43,9 @@ second pass writes out the executable, replacing references
 with the addresses calculated during the first pass.
 
 Libraries are simply collections of object files. They can
-be created with the (upcoming!) ar80 tool.
+be created with the
+[ar80](https://github.com/ibara/ar80)
+utility.
 
 Caveats
 -------
