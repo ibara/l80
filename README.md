@@ -50,6 +50,9 @@ Caveats
 `l80` does not recognize nor remove the code of unused
 symbols. Doing so is planned.
 
+The order of the object files and libraries can be very
+important.
+
 Bugs
 ----
 Probably lots. Test and let me know.
