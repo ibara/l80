@@ -1,10 +1,14 @@
 l80
 ===
-`l80` is an Intel 8080/Zilog Z80 linker for CP/M-80.
+`l80` is a linker for CP/M and MS-DOS `COM` executables.
 
-It reads in object files created by
+It reads in object files and libraries created by
 [`a80`](https://github.com/ibara/a80)
 and produces executable CP/M-80 binaries from them.
+
+There are not (yet) any assemblers or compilers that
+produce 8086 object code for `l80`. But when such programs
+appear, `l80` will already be able to handle them.
 
 Building
 --------
@@ -59,12 +63,6 @@ Bugs
 ----
 Probably lots. Test and let me know.
 
-Future
-------
-`l80` would be able to link MS-DOS `COM` executables as-is,
-if only there were an assembler or compiler that used the
-`l80` file format...
-
 License
 -------
 ISC License. See `LICENSE` for details.
@@ -72,6 +70,6 @@ ISC License. See `LICENSE` for details.
 Note
 ----
 This `l80` is in no way related to the linker of the same
-name produced by Microsoft, also for CP/M-80.
+name produced by Microsoft, also targeting CP/M-80.
 
 That one uses a very different file format.
