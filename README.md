@@ -18,9 +18,12 @@ and that works well.
 
 Running
 -------
-`usage: l80 file.com file1.obj [file2.obj ...]`
+`usage: l80 binary file1.obj [file2.obj ...]`
 
 All object files must end in `.obj` or `.lib`.
+
+The `.com` extension will automatically be appended to
+`binary`.
 
 Object format
 -------------

@@ -219,7 +219,7 @@ int main(string[] args)
 
     /* Make sure we have the right number of arguments.  */
     if (args.length < 3) {
-        stderr.writeln("usage: l80 file.com file1.obj [file2.obj ...]");
+        stderr.writeln("usage: l80 binary file1.obj [file2.obj ...]");
         return 1;
     }
 
@@ -241,7 +241,7 @@ int main(string[] args)
     if (ret == 0) {
         ret = process2();
         if (ret == 0)
-            fileWrite(args[1]);
+            fileWrite(args[1] ~ ".com");
     }
 
     return ret;
