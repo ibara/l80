@@ -24,6 +24,28 @@ on
 [OpenBSD](https://www.openbsd.org/)
 and that works well.
 
+There is a port of `l80` to C that can be compiled for
+CP/M, MS-DOS, and Unix. The C port has the following
+differences:
+* Only the first 15 characters of symbol names are unique.
+* On CP/M, the binary is named `ld` to avoid conflict with
+[Microsoft L80](https://altairclone.com/downloads/manuals/Microsoft%20L80%20Linker.pdf).
+
+You can build this C version for CP/M with:
+```
+$ make cpm
+```
+
+For MS-DOS with:
+```
+$ make dos
+```
+
+And for Unix with:
+```
+$ make c
+```
+
 Running
 -------
 `usage: l80 binary file1.obj [file2.obj ...]`
