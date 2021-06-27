@@ -130,6 +130,8 @@ private int collect1()
             /* Binary has a maximum size of 65,280 bytes (FF00h).  */
             if (addr > 65280)
                 return error("final binary exceeds 65,280 bytes");
+        } else if (rawobjs[i] == '\003') {
+            /* Do nothing for now.  */
         } else {
             /* This should never happen.  */
             return error("unknown control byte: " ~ to!string(rawobjs[i]));
@@ -194,6 +196,8 @@ private int process2()
             /* If symbol was not found, error out.  */
             if (found == false)
                 return error("undefined reference: " ~ name);
+        } else if (rawobjs[i] == '\003') {
+            /* Do nothing for now.  */
         } else {
             /* This should never happen.  */
             return error("unknown control byte: " ~ to!string(rawobjs[i]));
