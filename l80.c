@@ -26,13 +26,13 @@
 /*
  * Struct holding name and matching calculating addresses.
  */
-struct collection
+typedef struct collection
 {
 	char *symbol;
 	unsigned int addr;
 	struct collection *next;
-};
-static struct collection *head;
+} collection_t;
+static collection_t *head;
 
 /*
  * Error handling.
@@ -60,7 +60,7 @@ static int
 collect1(int argc, char *argv[])
 {
 	FILE *fp;
-	struct collection *curr, *new;
+	collection_t *curr, *new;
 	char symbol[16];
 	int ch, i, j;
 	unsigned long addr = 0x100;
@@ -112,7 +112,7 @@ collect1(int argc, char *argv[])
 				while (curr->next != NULL)
 					curr = curr->next;
 
-				if ((new = malloc(sizeof(struct collection))) == NULL)
+				if ((new = malloc(sizeof(collection_t))) == NULL)
 					return error("could not create symbol entry");
 
 				new->symbol = strdup(symbol);
@@ -157,7 +157,7 @@ static int
 process2(int argc, char *argv[], FILE *fq)
 {
 	FILE *fp;
-	struct collection *curr;
+	collection_t *curr;
 	char symbol[16];
 	int ch, found, i, j;
 	unsigned int bin = 0;
@@ -244,14 +244,24 @@ int
 main(int argc, char *argv[])
 {
 	FILE *fp;
-	struct collection *curr;
+	collection_t *curr;
+	char *ending;
 	char bin[13];	/* 8 + 3 + DOT */
-	int ret;
+	int i, ret;
 
 	/* Make sure we have the correct number of arguments.  */
 	if (argc < 3) {
 		fprintf(stderr, "usage: ld binary file1.obj [file2.obj ...]\n");
 		return 1;
+	}
+
+	/* Check endings of all input files.  */
+	for (i = 2; i < argc; i++) {
+		ending = strrchr(argv[i], '.');
+		if (strcmp(ending, ".obj") && strcmp(ending, ".OBJ")) {
+			if (strcmp(ending, ".lib") && strcmp(ending, ".LIB"))
+				return error("input files must end in \".obj\" or \".lib\"");
+		}
 	}
 
 	(void) memset(bin, 0, sizeof(bin));
@@ -263,7 +273,7 @@ main(int argc, char *argv[])
 	(void) strncat(bin, ".com", sizeof(bin) - 1);
 
 	/* Preload collection with initial empty symbol.  */
-	if ((curr = malloc(sizeof(struct collection))) == NULL)
+	if ((curr = malloc(sizeof(collection_t))) == NULL)
 		return error("could not add symbol");
 
 	curr->symbol = "@";
